@@ -12,13 +12,33 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-	return `# ${data.projectTitle}
-${data.sections
-	.map(section => {
-		return `## ${section}`;
-	})
-	.join('\n')}
-`;
+	let readmePage = `# ${data.projectTitle}\n`;
+
+	if (data.description) {
+		readmePage += `## Description\n`;
+		readmePage += `${data.description}\n`;
+	}
+
+	if (data.installation) {
+		readmePage += `## Installation\n`;
+		readmePage += `${data.installation}\n`;
+	}
+
+	if (data.usage) {
+		readmePage += `## Usage\n`;
+		readmePage += `${data.installation}\n`;
+	}
+
+	if (data.credits) {
+		readmePage += `## Credits\n`;
+		readmePage += `${data.credits}\n`;
+	}
+
+	return readmePage;
 }
 
 module.exports = generateMarkdown;
+
+/*
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illo maxime omnis itaque autem sapiente, eius expedita quibusdam. Earum quasi quo, aut tempora cumque eligendi suscipit beatae! Amet, possimus doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illo maxime omnis itaque autem sapiente, eius expedita quibusdam. Earum quasi quo, aut tempora cumque eligendi suscipit beatae! Amet, possimus doloribus.
+*/
