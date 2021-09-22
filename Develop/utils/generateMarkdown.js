@@ -29,6 +29,26 @@ function generateMarkdown(data) {
 		readmePage += `${data.installation}\n`;
 	}
 
+	if (data.license) {
+		readmePage += `## License\n`;
+		readmePage += `${data.license}\n`;
+	}
+
+	if (data.contributing) {
+		readmePage += `## Contributing\n`;
+		readmePage += `${data.contributing}\n`;
+	}
+
+	if (data.tests) {
+		readmePage += `## Tests\n`;
+		readmePage += `${data.tests}\n`;
+	}
+
+	if (data.questions) {
+		readmePage += `## Questions\n`;
+		readmePage += `${data.questions}\n`;
+	}
+
 	if (data.credits) {
 		readmePage += `## Credits\n`;
 		readmePage += `${data.credits}\n`;

@@ -85,7 +85,27 @@ const userHeaders = [
 	{
 		type: 'editor',
 		name: 'usage',
-		message: '\nEnter instructions about you app USAGE section or leave EMPTY.',
+		message: '\nEnter instructions about your app USAGE section or leave EMPTY.',
+	},
+	{
+		type: 'editor',
+		name: 'license',
+		message: '\nEnter instructions about your app LICENSE section or leave EMPTY.',
+	},
+	{
+		type: 'editor',
+		name: 'contributing',
+		message: '\nEnter the CONTRIBUTING  section or leave EMPTY.',
+	},
+	{
+		type: 'editor',
+		name: 'tests',
+		message: '\nEnter instructions about your app TESTS section or leave EMPTY.',
+	},
+	{
+		type: 'editor',
+		name: 'questions',
+		message: '\nEnter the QUESTIONS section or leave EMPTY.',
 	},
 	{
 		type: 'editor',
