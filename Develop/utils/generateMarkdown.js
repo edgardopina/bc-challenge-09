@@ -29,10 +29,11 @@ function generateMarkdown(data) {
 		readmePage += `${data.installation}\n`;
 	}
 
-	if (data.license) {
-		readmePage += `## License\n`;
-		readmePage += `${data.license}\n`;
-	}
+   readmePage += `## License\n`;
+	readmePage += `Copyright (c) ${data.licenseGrantor}. All rights reserved.
+
+Licensed under the ${data.licenseType}.
+`;
 
 	if (data.contributing) {
 		readmePage += `## Contributing\n`;
@@ -57,7 +58,7 @@ function generateMarkdown(data) {
 	return readmePage;
 }
 
-module.exports = generateMarkdown;
+export default generateMarkdown;
 
 /*
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illo maxime omnis itaque autem sapiente, eius expedita quibusdam. Earum quasi quo, aut tempora cumque eligendi suscipit beatae! Amet, possimus doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illo maxime omnis itaque autem sapiente, eius expedita quibusdam. Earum quasi quo, aut tempora cumque eligendi suscipit beatae! Amet, possimus doloribus.

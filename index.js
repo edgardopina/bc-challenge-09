@@ -1,12 +1,19 @@
-const clearTheScreen = '\u001b[3J\u001b[2J\u001b[1J';
 // TODO: Include packages needed for this application
+import {writeFile} from 'fs/promises';
 
-const fs = require('fs');
+// const inquirer = require('inquirer');
+import inquirer from 'inquirer';
+import fetch from 'node-fetch';
 
-const inquirer = require('inquirer');
+// const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
+import generateMarkdown from './Develop/utils/generateMarkdown.js';
 
-const generateMarkdown = require('./Develop/utils/generateMarkdown.js');
+const licenseList = {
+	name: [],
+	url: [],
+};
 
+const clearTheScreen = '\u001b[3J\u001b[2J\u001b[1J';
 const helpStart = `                           Welcome to the "README.md Generator" Application
 
 1. You will be asked to enter information until you answer "Required" prompts.
@@ -43,7 +50,6 @@ const helpStart = `                           Welcome to the "README.md Generato
    terminal/console and re-launch the application for the best user experience.
 
                                  Enjoy using "README.md Generator"!`;
-
 const helpEnd = `
 Congratulations, your README.md file has been generated. You will find the README.md file in the root
 directory. You may want to push it to your GitHub repository to see it or you can use a VS Code 
@@ -52,11 +58,45 @@ extension to preview it within VS Code.
                             Thank you for using the "README.md Generator!`;
 
 // TODO: Create an array of questions for user input
-const userHeaders = [
+const userPrompts = [
+	// {
+	// 	type: 'input',
+	// 	name: 'projectTitle',
+	// 	message: '\nWhat is the title of your Project? (Required)',
+	// 	validate: notEmpty => {
+	// 		if (notEmpty) {
+	// 			return true;
+	// 		} else {
+	// 			return false;
+	// 		}
+	// 	},
+	// },
+	// {
+	// 	type: 'editor',
+	// 	name: 'description',
+	// 	message: '\nEnter a detailed PROJECT DESCRIPTION section. (Required)',
+	// 	validate: notEmpty => {
+	// 		if (notEmpty) {
+	// 			return true;
+	// 		} else {
+	// 			return false;
+	// 		}
+	// 	},
+	// },
+	// {
+	// 	type: 'editor',
+	// 	name: 'installation',
+	// 	message: '\nEnter the step-by-step INSTALLATION INSTRUCTIONS section or leave EMPTY.',
+	// },
+	// {
+	// 	type: 'editor',
+	// 	name: 'usage',
+	// 	message: '\nEnter instructions about your app USAGE section or leave EMPTY.',
+	// },
 	{
 		type: 'input',
-		name: 'projectTitle',
-		message: '\nWhat is the title of your Project? (Required)',
+		name: 'licenseGrantor',
+		message: 'Enter the NAME of the License Grantor: (Required)',
 		validate: notEmpty => {
 			if (notEmpty) {
 				return true;
@@ -65,82 +105,62 @@ const userHeaders = [
 			}
 		},
 	},
+
 	{
-		type: 'editor',
-		name: 'description',
-		message: '\nEnter a detailed PROJECT DESCRIPTION section. (Required)',
-		validate: notEmpty => {
-			if (notEmpty) {
-				return true;
-			} else {
-				return false;
-			}
-		},
+		type: 'list',
+		name: 'licenseType',
+		message:
+			'Select from one of the following licenses: (for a detailed explanation, please visit https://choosealicense.com)',
+		choices: licenseList.name,
+		loop: false,
 	},
-	{
-		type: 'editor',
-		name: 'installation',
-		message: '\nEnter the step-by-step INSTALLATION INSTRUCTIONS section or leave EMPTY.',
-	},
-	{
-		type: 'editor',
-		name: 'usage',
-		message: '\nEnter instructions about your app USAGE section or leave EMPTY.',
-	},
-	{
-		type: 'editor',
-		name: 'license',
-		message: '\nEnter instructions about your app LICENSE section or leave EMPTY.',
-	},
-	{
-		type: 'editor',
-		name: 'contributing',
-		message: '\nEnter the CONTRIBUTING  section or leave EMPTY.',
-	},
-	{
-		type: 'editor',
-		name: 'tests',
-		message: '\nEnter instructions about your app TESTS section or leave EMPTY.',
-	},
-	{
-		type: 'editor',
-		name: 'questions',
-		message: '\nEnter the QUESTIONS section or leave EMPTY.',
-	},
-	{
-		type: 'editor',
-		name: 'credits',
-		message: '\nEnter the CREDITS section or leave EMPTY.',
-	},
+	// {
+	// 	type: 'editor',
+	// 	name: 'contributing',
+	// 	message: '\nEnter the CONTRIBUTING  section or leave EMPTY.',
+	// },
+	// {
+	// 	type: 'editor',
+	// 	name: 'tests',
+	// 	message: '\nEnter instructions about your app TESTS section or leave EMPTY.',
+	// },
+	// {
+	// 	type: 'editor',
+	// 	name: 'questions',
+	// 	message: '\nEnter the QUESTIONS section or leave EMPTY.',
+	// },
+	// {
+	// 	type: 'editor',
+	// 	name: 'credits',
+	// 	message: '\nEnter the CREDITS section or leave EMPTY.',
+	// },
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-	{
-		return new Promise((resolve, reject) => {
-			fs.writeFile(fileName, data, err => {
-				// if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
-				if (err) {
-					reject(err);
-					// return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
-					return;
-				}
-				// if everything went well, resolve the Promise and send the successful data to the `.then()` method
-				resolve({
-					ok: true,
-					message: 'File created!',
-				});
+	return new Promise((resolve, reject) => {
+		writeFile(fileName, data, err => {
+			// if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
+			if (err) {
+				reject(err);
+				return; // return  here to prevent the Promise from  executing the resolve() function as well
+			}
+			// if everything went well, resolve the Promise and send the successful data to the `.then()` method
+			resolve({
+				ok: true,
+				message: 'File created!',
 			});
 		});
-	}
+	});
 }
 
 // TODO: Create a function to initialize app
-function init() {
-	console.log(clearTheScreen);
-	console.log(helpStart);
-	return inquirer.prompt(userHeaders);
+async function init() {
+	await newFunction();
+
+	return inquirer.prompt(userPrompts);
 }
+
 
 init()
 	.then(data => {
@@ -154,6 +174,20 @@ init()
 		console.log(helpEnd);
 	});
 
+
+async function getLicenseTypesList() {
+	const promiseLicList = await fetch('https://api.github.com/licenses', {
+		headers: {
+			Accept: 'application/vnd.github.v3+json',
+		},
+	});
+	const licenseData = await promiseLicList.json();
+
+	licenseData.forEach(elem => {
+		licenseList.name.push(elem.name);
+		licenseList.url.push(elem.url);
+	});
+}
 /*
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illo maxime omnis itaque autem sapiente, eius expedita quibusdam. Earum quasi quo, aut tempora cumque eligendi suscipit beatae! Amet, possimus doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illo maxime omnis itaque autem sapiente, eius expedita quibusdam. Earum quasi quo, aut tempora cumque eligendi suscipit beatae! Amet, possimus doloribus.
 */
