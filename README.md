@@ -11,9 +11,9 @@ This project uses [node.js](https://nodejs.org/en/about/) as the framework and g
 Carefully following these steps to install the _"README.md Generator"_ application in your computer:
 1. Create a repository in your GitHUb account, i.e. "readme-generator".
 2. In your local computer, move to the parent Git folder (or create it) where you will install the  _"README.md Generator"_ application.
-4. With the terminal prompt active, clone the application repository into your local repository by entering this command: git clone git@github.com:JoseEPina/bc-challenge-09.git
-5. Navidate to your local bc-challenge-09 folder. 
-6. Get **_your_** ssh key from your own repository in GitHub, as shown here: ![Get your remote SSH key] ('./assets/images/getYourSSH.jpg)
+4. With the terminal prompt active, clone the application repository into your local repository by entering this command: git clone git@github.com:JoseEPina/readme-generator.git
+5. Navidate to your local **_readme-generator_** folder. 
+6. Get **_your_** ssh key from your own GitHub repository, as shown here: ![Get your remote SSH key] ('./assets/images/getYourSSH.jpg)
 7. Rename your local origin by entering this command: git branch -m origin removeLocal
 8. Create a conection to **_your_** repository by entering this command: git remote set-url origin git@github.com:<yourGitHubUserName>
 9. Push to your repository by entering this command: git push origin main
