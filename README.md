@@ -14,7 +14,7 @@ Carefully following these steps to install the _"README.md Generator"_ applicati
 4. With the terminal prompt active, clone the application repository into your local repository by entering this command (remove single quotes): 'git clone git@github.com:JoseEPina/readme-generator.git'
 5. Navigate to your local **_readme-generator_** folder. 
 6. Get **_your_** ssh url key from your own GitHub repository, as shown here: ![Get your remote SSH url key] ('./assets/images/getYourSshUrlKey.jpg)
-7. Using the SSH url key obtained iin the previous step, create a conection to **_your_** repository by entering this command (remove single quotes): 'git remote set-url origin yourSshUrlKey'
+7. Using the SSH url key obtained in the previous step, create a conection to **_your_** repository by entering this command (remove single quotes): 'git remote set-url origin yourSshUrlKey'
 8. Install [node.js](https://nodejs.org/en/) (follow node.js instructions).
 9. Install the npm [inquirer.js](https://www.npmjs.com/package/inquirer) package (follow inquirer instructions).
 10. Install the npm [node-fetch](https://www.npmjs.com/package/node-fetch) package (follow node-fetch instructions).
