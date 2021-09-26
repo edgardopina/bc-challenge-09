@@ -23,8 +23,27 @@ Carefully following these steps to install the _"README.md Generator"_ applicati
 13. From your local main branch run the application by entering: **_node index_** in the terminal prompt.
 
 ## Usage
+1. After completing Installation Instructions, launch the application through the terminal with the command: _**node index**_.
+
+2. A help-start message will be displayed at the beginning to provide further instructions about the editor usage and basic markdown syntax.
+
+3. You will be prompted throught the terminal to enter a Project Title and a Descruption. Please note that these are marked as **(Required)**.
+
+4. Take note that some prompts will deploy a text editor application in order for you to enter the appropriate information.
+
+5. The _**minimum reccomended**_ sections to include in your README.md are defaulted to be included but you can select 'No' to exclude them.
+
+6. Some optional sections are defaulted to NOT be included, but you can select 'Yes' to include them.
+
+7. At the end of the program, you can _git push_ your files into your GitHub Repository and see your finalized README.md file. If you want to make changes, you can
+copy and paste from your README.md file into the prompts and make adjustments as needed. 
+
+8. Please refer to the following video link for additional [usage examples](https://drive.google.com/file/d/1y23PSlKCuoO_wQvGMAcWKsHr1Sp95J6j/view).  
 
 ## Credits
+* [Simon Boudrias](https://github.com/SBoudrias) creator of the npm [inquirer.js](https://www.npmjs.com/package/inquirer) package.
+* [Xander Rapstine Xandromus](https://github.com/Xandromus) provided seven empty function declarations and one empty function call as starter code for this project.
+* Open-source community - creators of [node.js](https://nodejs.org/en/about/) and [node-fetch](https://www.npmjs.com/package/node-fetch).
 
 ## License
 
