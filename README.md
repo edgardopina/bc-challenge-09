@@ -21,4 +21,13 @@ Carefully following these steps to install the _"README.md Generator"_ applicati
 11. Install the npm  [badge-maker](https://www.npmjs.com/package/badge-maker) package (follow badge-maker instructions).
 12. Stage, Commit, and Push to your repository by entering this command: 'git push origin main'
 13. From your local main branch run the application by entering: **_node index_** in the terminal prompt.
+
+## Usage
+
+## Credits
+
+## License
+
+## Questions
+
   
